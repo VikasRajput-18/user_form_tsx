@@ -1,4 +1,4 @@
-import { useFormik, Formik, useField } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import "yup-phone";
 import "./UserForm.css";
@@ -16,16 +16,7 @@ export default function UserForm() {
   const [data, setData] = useState({});
   console.log(data);
 
-  function postUser() {
-    let userDetails = { ...data };
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: JSON.stringify(userDetails),
-    }).then((res)=> console.log(res))
-  }
+
 
   const signUpSchema = Yup.object({
     name: Yup.string()
@@ -35,16 +26,26 @@ export default function UserForm() {
     dob: Yup.string().required("Age is required"),
     email: Yup.string().email("Must be valid email address"),
     mobile: Yup.string().phone(
-      "IN" || "BD",
-      true,
-      "Please enter a valid phone number"
+      "IN" && "BD"
     ),
     gaurdian: Yup.string(),
     gaurdianName: Yup.string().when("gaurdian", {
       is: Yup.string(),
       then: Yup.string().required("This field is required"),
     }),
+    
   });
+    function postUser() {
+      let userDetails = { ...data };
+      fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: JSON.stringify(userDetails),
+      })
+        
+    }
 
   return (
     <Formik
@@ -72,7 +73,6 @@ export default function UserForm() {
       }}
       validationSchema={signUpSchema}
       onSubmit={(values, actions) => {
-        console.log({ values, actions });
         actions.resetForm();
         setData(values);
       }}
@@ -182,6 +182,17 @@ export default function UserForm() {
                     value={values.mobile}
                     onChange={handleChange}
                   />
+                  {errors.mobile && (
+                    <p
+                      style={{
+                        color: "red",
+                        fontSize: "12px",
+                        marginLeft: "20px",
+                      }}
+                    >
+                      {errors.mobile}
+                    </p>
+                  )}
                 </div>
 
                 <div className="text_field govtID_field">
