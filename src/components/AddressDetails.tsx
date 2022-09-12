@@ -19,7 +19,12 @@ const AddressDetails = () => {
             <label htmlFor="address">
               Address <span>*</span>
             </label>
-            <TextField id="address" label="Enter Address" variant="outlined" />
+            <TextField
+              id="address"
+              label="Enter Address"
+              variant="outlined"
+              
+            />
           </div>
         </div>
 
@@ -30,9 +35,10 @@ const AddressDetails = () => {
               <InputLabel id="demo-simple-select-label">Enter State</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                id="state"
                 label="Enter State"
                 style={{ width: "200px" }}
+                
               >
                 <MenuItem value="new_delhi">New Delhi</MenuItem>
                 <MenuItem value="rajasthan">Rajasthan</MenuItem>
@@ -52,8 +58,9 @@ const AddressDetails = () => {
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                id="city"
                 label="Enter City"
+                
               >
                 <MenuItem value="new_delhi">New Delhi</MenuItem>
                 <MenuItem value="mumbai">Mumbai</MenuItem>
@@ -66,28 +73,26 @@ const AddressDetails = () => {
 
         <div>
           <div className="text_field">
-            <label htmlFor="country">
-              Country <span>*</span>
-            </label>
+            <label htmlFor="country">Country</label>
             <TextField
-              id="address"
+              id="country"
               label="Enter Country"
               variant="outlined"
               defaultValue="India"
+              
             />
           </div>
         </div>
 
         <div>
           <div className="text_field">
-            <label htmlFor="pincode">
-              Pin Code <span>*</span>
-            </label>
+            <label htmlFor="pincode">Pin Code</label>
             <TextField
-              id="address"
+              id="pincode"
               label="Enter Pincode"
               variant="outlined"
               type="number"
+              
             />
           </div>
         </div>

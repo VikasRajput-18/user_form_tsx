@@ -5,8 +5,16 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-;
-const PersonalDetails = () => {
+import { validateYupSchema } from "formik/dist/Formik";
+
+interface AppProps {
+  handleChange : Function,
+  values : {
+    name: string
+  }
+}
+
+const PersonalDetails = ({ handleChange  , values}: AppProps) => {
   return (
     <>
       <div>
@@ -20,7 +28,15 @@ const PersonalDetails = () => {
               <label htmlFor="name">
                 Name <span>*</span>
               </label>
-              <TextField id="name" label="Enter Name" variant="outlined" />
+              <TextField
+                id="name"
+                label="Enter Name"
+                variant="outlined"
+                // value={values.name}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+                  handleChange()
+                }
+              />
             </div>
           </div>
 
@@ -46,7 +62,7 @@ const PersonalDetails = () => {
                 <InputLabel id="demo-simple-select-label">Enter Sex</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
-                  id="demo-simple-select"
+                  id="gender"
                   label="Enter Sex"
                 >
                   <MenuItem value="male">Male</MenuItem>
@@ -59,9 +75,9 @@ const PersonalDetails = () => {
         </div>
         <div className="user_details2">
           <div className="text_field phn_field">
-            <label htmlFor="phone">Mobile</label>
+            <label htmlFor="mobile">Mobile</label>
             <TextField
-              id="name"
+              id="mobile"
               label="Mobile"
               variant="outlined"
               type="number"
@@ -77,7 +93,7 @@ const PersonalDetails = () => {
                 <InputLabel id="demo-simple-select-label">ID Type</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
-                  id="demo-simple-select"
+                  id="govtIdType"
                   label="Enter ID"
                 >
                   <MenuItem value="adhar_card">Adhar Card</MenuItem>
@@ -86,7 +102,7 @@ const PersonalDetails = () => {
                 </Select>
               </FormControl>
 
-              <TextField label="Enter Govt ID" variant="outlined" />
+              <TextField label="Enter Govt ID" id="govtID" variant="outlined" />
             </div>
           </div>
         </div>

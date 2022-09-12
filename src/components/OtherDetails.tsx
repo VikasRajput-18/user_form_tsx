@@ -1,4 +1,4 @@
-import React from "react";
+
 import {
   FormControl,
   InputLabel,
@@ -6,6 +6,7 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+
 const OtherDetails = () => {
   return (
     <>
@@ -20,6 +21,7 @@ const OtherDetails = () => {
             label="Enter Occupation"
             variant="outlined"
             type="text"
+           
           />
         </div>
 
@@ -32,8 +34,9 @@ const OtherDetails = () => {
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                id="religion"
                 label="Enter Religion"
+               
               >
                 <MenuItem value="hindu">Hindu</MenuItem>
                 <MenuItem value="muslim">Muslim</MenuItem>
@@ -53,8 +56,9 @@ const OtherDetails = () => {
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                id="martial_status"
                 label="Enter Martial Status"
+               
               >
                 <MenuItem value="married">Married</MenuItem>
                 <MenuItem value="unmarried">Unmarried</MenuItem>
@@ -72,8 +76,9 @@ const OtherDetails = () => {
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                id="blood_group"
                 label="Enter Blood Group"
+               
               >
                 <MenuItem value="b+">B +</MenuItem>
                 <MenuItem value="b-">B -</MenuItem>
@@ -86,14 +91,13 @@ const OtherDetails = () => {
 
         <div>
           <div className="text_field">
-            <label htmlFor="nationality">
-              Nationality 
-            </label>
+            <label htmlFor="nationality">Nationality</label>
             <TextField
-              id="address"
+              id="nationality"
               label="Enter Nationality"
               variant="outlined"
               defaultValue="India"
+             
             />
           </div>
         </div>

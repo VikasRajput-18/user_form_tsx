@@ -65,7 +65,7 @@
 .contact_details {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 30px;
   flex-wrap: wrap;
 }
 .guardian_box {
@@ -95,4 +95,13 @@
   align-items: center;
   gap: 30px;
   flex-wrap: wrap;
+}
+
+/* buttons */
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
 }
