@@ -13,7 +13,6 @@ const ContactDetails = () => {
       </div>
 
       <div className="contact_details">
-        <div className="text_field ">
           <div className="guardian_box">
             <label htmlFor="govtID" style={{ width: "300px" }}>
               Guardian Details
@@ -53,7 +52,6 @@ const ContactDetails = () => {
               type="number"
             />
           </div>
-        </div>
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 
 import AddressDetails from "./AddressDetails";
 import ContactDetails from "./ContactDetails";
+import OtherDetails from "./OtherDetails";
 import PersonalDetails from "./PersonalDetails";
 import "./UserForm.css";
 
@@ -10,6 +11,7 @@ export default function UserForm() {
       <PersonalDetails />
       <ContactDetails />
       <AddressDetails />
+      <OtherDetails />
     </form>
   );
 }
