@@ -44,13 +44,15 @@ let patientSearchForm: SearchPatientForm = {
 const validationSchema = Yup.object({
   date: Yup.string().required("Date is required"),
   consultant: Yup.string().required("Consultant is required"),
-  services: Yup.array().of(
-    Yup.object().shape({
-      name: Yup.string().required("Service Name is required"),
-      rate: Yup.string().required("Rate is required"),
-      qty: Yup.string().required("Qty is required"),
-    })
-  ),
+  services: Yup.array()
+    .of(
+      Yup.object().shape({
+        name: Yup.string().required("Service Name is required"),
+        rate: Yup.string().required("Rate is required"),
+        qty: Yup.string().required("Qty is required"),
+      })
+    )
+    .required("Fields are required - Name , Rate , Qty"),
 });
 const SearchPatient: React.FC = () => {
   return (
@@ -223,7 +225,6 @@ const SearchPatient: React.FC = () => {
                                               onBlur={formik.handleBlur}
                                             />
                                           </div>
-                                          
                                         </div>
 
                                         <div>
@@ -285,6 +286,9 @@ const SearchPatient: React.FC = () => {
                                 >
                                   Add
                                 </Button>
+                              </div>
+                              <div className="errors">
+                             {/* errors for table  */}
                               </div>
                             </div>
                           );
