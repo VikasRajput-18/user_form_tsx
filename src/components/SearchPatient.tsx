@@ -69,7 +69,7 @@ const SearchPatient: React.FC = () => {
           validationSchema={validationSchema}
         >
           {(formik) => {
-            console.log("errors" ,formik.touched)
+            console.log("errors", formik.errors.services);
             return (
               <div>
                 <div className="search_patient">
@@ -80,18 +80,24 @@ const SearchPatient: React.FC = () => {
                     <div className="opd_registration_details">
                       <div className="date_field">
                         <label htmlFor="date">Date</label>
-                        <div style={{display : 'flex' , flexDirection : 'column'}}>
-                        <TextField
-                          id="date"
-                          name="date"
-                          variant="outlined"
-                          type="date"
-                          style={{ width: "300px" }}
-                          // value={values}
-                          onChange={formik.handleChange}
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                        >
+                          <TextField
+                            id="date"
+                            name="date"
+                            variant="outlined"
+                            type="date"
+                            style={{ width: "300px" }}
+                            value={formik.values.date}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                           />
-                          {formik.errors.date && <span>{formik.errors.date}</span>}
-
+                          {formik.errors.date && (
+                            <span style={{ color: "red", fontSize: "12px" }}>
+                              {formik.errors.date}
+                            </span>
+                          )}
                         </div>
                       </div>
                       <div className="consultant_field">
@@ -112,6 +118,11 @@ const SearchPatient: React.FC = () => {
                             <MenuItem value={"vatsal_dk"}>VATSAL DK</MenuItem>
                             <MenuItem value={"demo_1"}>Demo1</MenuItem>
                           </Select>
+                          {formik.errors.consultant && (
+                            <span style={{ color: "red", fontSize: "12px" }}>
+                              {formik.errors.consultant}
+                            </span>
+                          )}
                         </FormControl>
                       </div>
 
@@ -178,10 +189,11 @@ const SearchPatient: React.FC = () => {
                                             </InputLabel>
                                             <Select
                                               labelId="demo-simple-select-label"
-                                              id="gender"
-                                              label="Enter Consultant"
+                                              id="name"
+                                              label="Enter Name"
                                               name={`services[${ind}].name`}
                                               onChange={formik.handleChange}
+                                              onBlur={formik.handleBlur}
                                             >
                                               <MenuItem
                                                 value={"consultant_fees"}
@@ -200,18 +212,18 @@ const SearchPatient: React.FC = () => {
                                               </MenuItem>
                                             </Select>
                                           </FormControl>
-                                          <ErrorMessage
-                                            component="span"
-                                            name={`services[${ind}].name`}
-                                          />
                                         </div>
                                         <div>
-                                          <TextField
-                                            type="number"
-                                            label="Rate"
-                                            name={`services[${ind}].rate`}
-                                            onChange={formik.handleChange}
-                                          />
+                                          <div>
+                                            <TextField
+                                              type="number"
+                                              label="Rate"
+                                              name={`services[${ind}].rate`}
+                                              onChange={formik.handleChange}
+                                              onBlur={formik.handleBlur}
+                                            />
+                                          </div>
+                                          
                                         </div>
 
                                         <div>
@@ -220,6 +232,7 @@ const SearchPatient: React.FC = () => {
                                             label="Quantity"
                                             name={`services[${ind}].qty`}
                                             onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
                                           />
                                         </div>
                                         <div>
@@ -228,6 +241,7 @@ const SearchPatient: React.FC = () => {
                                             label="Unit"
                                             name={`services[${ind}].unit`}
                                             onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
                                           />
                                         </div>
                                         <div>
@@ -236,6 +250,7 @@ const SearchPatient: React.FC = () => {
                                             label="Discount"
                                             name={`services[${ind}].discount`}
                                             onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
                                           />
                                         </div>
                                         <div>
@@ -244,6 +259,7 @@ const SearchPatient: React.FC = () => {
                                             label="total"
                                             name={`services[${ind}].total`}
                                             onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
                                           />
                                         </div>
                                         <div>
@@ -252,6 +268,7 @@ const SearchPatient: React.FC = () => {
                                             label="Remark"
                                             name={`services[${ind}].remark`}
                                             onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
                                           />
                                         </div>
                                       </div>
@@ -276,7 +293,9 @@ const SearchPatient: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <Button type="submit" onClick={(e) => e.preventDefault()}>Submit</Button>
+                    <Button type="submit" onClick={(e) => e.preventDefault()}>
+                      Submit
+                    </Button>
                   </div>
                 </div>
               </div>
