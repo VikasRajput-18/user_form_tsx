@@ -3,6 +3,7 @@ import { FormikErrors, FormikTouched } from 'formik';
 import React from 'react'
 import { MyFormValues } from "./formValues";
 
+import {useState}  from 'react'
 interface Props {
   values: {
     name: string;
@@ -25,6 +26,7 @@ const PersonalDetails: React.FC<Props> = ({
   errors,
   touched,
 }) => {
+
   return (
     <>
       <div>

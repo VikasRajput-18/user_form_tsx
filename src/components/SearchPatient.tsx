@@ -16,40 +16,41 @@ import {
   FieldArray,
   FieldArrayRenderProps,
 } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 
-let SearchPatientForm: {
+interface SearchPatientForm {
   date: string;
   consultant: string;
   referred: string;
-  name: string;
-  rate: string;
-  qyt: string;
-  unit: string;
-  discount: string;
-  total: string;
-  remark: string;
-}[] = [
-  {
-    date: "",
-    consultant: "",
-    referred: "",
-    name: "",
-    rate: "",
-    qyt: "",
-    unit: "",
-    discount: "",
-    total: "",
-    remark: "",
-  },
-];
+  services: {
+    name: string;
+    rate: number;
+    qty: number;
+    unit: number;
+    discount: number;
+    total: number;
+    remark: string;
+  }[];
+}
+
+let patientSearchForm: SearchPatientForm = {
+  date: "",
+  consultant: "",
+  referred: "",
+  services: [
+    { name: "", rate: 0, qty: 1, unit: 0, discount: 0, total: 0, remark: "" },
+  ],
+};
 
 const validationSchema = Yup.object({
   employees: Yup.array().of(
     Yup.object().shape({
-      name: Yup.string().required("field is required"),
-      last: Yup.string().required("field is required"),
+      date: Yup.string().required("Date is required"),
+      consultant: Yup.string().required("Consultant is required"),
+      name: Yup.string().required("Service Name is required"),
+      rate: Yup.string().required("Rate is required"),
+      qty: Yup.string().required("Qty is required"),
     })
   ),
 });
@@ -59,17 +60,17 @@ const SearchPatient: React.FC = () => {
       <div>
         <Formik
           initialValues={{
-            patitentForm: SearchPatientForm,
+            patitentForm: patientSearchForm.services,
           }}
           onSubmit={(values) => {
-            console.log("Submit" , values);
+            console.log(values);
           }}
           validationSchema={validationSchema}
         >
           {(formik) => {
-            console.log("Values" , formik.values.patitentForm)
+            console.log("Values", formik.values.patitentForm);
             return (
-              <>
+              <Form>
                 <div className="search_patient">
                   <span className="p_title">Search Patient</span>
 
@@ -134,7 +135,7 @@ const SearchPatient: React.FC = () => {
                     <span>Remark</span>
                     <span></span>
                   </div>
-                  <Form onSubmit={formik.handleSubmit}>
+                  <div>
                     <div className="form_group">
                       <FieldArray
                         name="patitentForm"
@@ -172,7 +173,7 @@ const SearchPatient: React.FC = () => {
                                               labelId="demo-simple-select-label"
                                               id="gender"
                                               label="Enter Consultant"
-                                              name={`patitentForm.${ind}.name`}
+                                              name={`patitentForm[${ind}].name`}
                                               onChange={formik.handleChange}
                                             >
                                               <MenuItem
@@ -194,14 +195,14 @@ const SearchPatient: React.FC = () => {
                                           </FormControl>
                                           <ErrorMessage
                                             component="span"
-                                            name={`patitentForm.${ind}.name`}
+                                            name={`patitentForm[${ind}].name`}
                                           />
                                         </div>
                                         <div>
                                           <TextField
                                             type="number"
                                             label="Rate"
-                                            name={`patitentForm.${ind}.rate`}
+                                            name={`patitentForm[${ind}].rate`}
                                           />
                                         </div>
 
@@ -209,35 +210,35 @@ const SearchPatient: React.FC = () => {
                                           <TextField
                                             type="number"
                                             label="Quantity"
-                                            name={`patitentForm.${ind}.qty`}
+                                            name={`patitentForm[${ind}].qty`}
                                           />
                                         </div>
                                         <div>
                                           <TextField
                                             type="number"
                                             label="Unit"
-                                            name={`patitentForm.${ind}.unit`}
+                                            name={`patitentForm[${ind}].unit`}
                                           />
                                         </div>
                                         <div>
                                           <TextField
                                             type="number"
                                             label="Discount"
-                                            name={`patitentForm.${ind}.discount`}
+                                            name={`patitentForm[${ind}].discount`}
                                           />
                                         </div>
                                         <div>
                                           <TextField
                                             type="number"
                                             label="total"
-                                            name={`patitentForm.${ind}.total`}
+                                            name={`patitentForm[${ind}].total`}
                                           />
                                         </div>
                                         <div>
                                           <TextField
                                             type="text"
                                             label="Remark"
-                                            name={`patitentForm.${ind}.remark`}
+                                            name={`patitentForm[${ind}].remark`}
                                           />
                                         </div>
                                       </div>
@@ -250,12 +251,7 @@ const SearchPatient: React.FC = () => {
                                   type="button"
                                   variant="contained"
                                   color="success"
-                                  onClick={() =>
-                                    arrayHelpers.insert(
-                                      formik.values.patitentForm.length + 1,
-                                      {}
-                                    )
-                                  }
+                                  onClick={() => arrayHelpers.push({})}
                                 >
                                   Add
                                 </Button>
@@ -265,12 +261,12 @@ const SearchPatient: React.FC = () => {
                         }}
                       />
                     </div>
-                    <div>
-                      <Button type="submit">Submit</Button>
-                    </div>
-                  </Form>
+                  </div>
+                  <div>
+                    <Button type="submit">Submit</Button>
+                  </div>
                 </div>
-              </>
+              </Form>
             );
           }}
         </Formik>
