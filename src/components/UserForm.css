@@ -102,12 +102,117 @@
 .buttons {
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
   gap: 20px;
 }
 
-.submit_btns{
+.submit_btns {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+/* Search Patient  */
+
+.search_patient {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.p_title {
+  background-color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: inline;
+  height: 50px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  width: 30%;
+}
+
+.registraion_details {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 70%;
+}
+
+.date_field,
+.consultant_field,
+.referred_field {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.date_field label,
+.consultant_field label,
+.referred_field label {
+  width: 150px;
+}
+
+.patient_form{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+.patient_data{
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  background-color: #FF8566;
+  border-radius: 4px;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+
+.patient_details{
+  position: relative;
+}
+.service_info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 20px;
+  padding-right: 40px;
+}
+
+.close{
+  position: absolute;
+  right: -10px;
+  top: 30px;
+
+}
+
+
+.serial_no{
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+margin-left: -10px;
+}
+
+.add_btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

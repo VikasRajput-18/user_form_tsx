@@ -1,7 +1,8 @@
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { FormikErrors, FormikTouched } from 'formik';
 import React from 'react'
-import {MyFormValues} from './UserForm'
+import { MyFormValues } from "./formValues";
+
 interface Props {
   values: {
     name: string;

@@ -7,7 +7,8 @@ import {
   TextField,
 } from "@mui/material";
 import { FormikErrors, FormikTouched } from "formik";
-import { MyFormValues } from "./UserForm";
+import { MyFormValues } from "./formValues";
+;
 interface Props {
   values: {
     address: string;

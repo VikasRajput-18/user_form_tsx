@@ -10,58 +10,14 @@ import PersonalDetails from "./PersonalDetails";
 import ContactDetails from "./ContactDetails";
 import AddressDetails from "./AddressDetails";
 import OtherDetails from "./OtherDetails";
-
-export interface MyFormValues {
-  name: string;
-  dob: string;
-  gender: string;
-  mobile: string;
-  govtIdType: string;
-  govtID: string;
-  gaurdian: string;
-  gaurdianName: string;
-  email: string;
-  contactNum: string;
-  address: string;
-  state: string;
-  city: string;
-  country: string;
-  pincode: string;
-  occupation: string;
-  religion: string;
-  martial_status: string;
-  blood_group: string;
-  nationality: string;
-}
-
-const initialValues: MyFormValues = {
-  name: "",
-  dob: "",
-  gender: "",
-  mobile: "",
-  govtIdType: "",
-  govtID: "",
-  gaurdian: "",
-  gaurdianName: "",
-  email: "",
-  contactNum: "",
-  address: "",
-  state: "",
-  city: "",
-  country: "",
-  pincode: "",
-  occupation: "",
-  religion: "",
-  martial_status: "",
-  blood_group: "",
-  nationality: "",
-};
+import SearchPatient from "./SearchPatient";
+import { MyFormValues } from "./formValues";
+import { initialValues } from "./formValues";
 
 const UserForm: React.FC = () => {
   const [data, setData] = useState<MyFormValues>(initialValues);
- 
 
-  const signUpSchema = Yup.object({
+  let signUpSchema = Yup.object({
     name: Yup.string()
       .min(2)
       .max(25, "Name must be less than 25 characters")
@@ -77,7 +33,7 @@ const UserForm: React.FC = () => {
   });
 
   function postUser() {
-    let userDetails = { ...data };
+    let userDetails: MyFormValues = { ...data };
     fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
       headers: {
@@ -191,6 +147,8 @@ const UserForm: React.FC = () => {
                 </Button>
               </Grid>
             </Grid>
+
+            <SearchPatient />
           </form>
         );
       }}
