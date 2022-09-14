@@ -144,7 +144,7 @@ const SearchPatient: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="patient_form">
+                <div className="patient_form patient_data_list">
                   <div className="patient_data">
                     <span>#</span>
                     <span>Name</span>
@@ -185,7 +185,7 @@ const SearchPatient: React.FC = () => {
                                         <p className="serial_no">{ind + 1}</p>
                                         <div>
                                           <FormControl
-                                            style={{ width: "300px" }}
+                                            style={{ width: "250px" }}
                                           >
                                             <InputLabel id="demo-simple-select-label">
                                               Consultant
@@ -296,9 +296,9 @@ const SearchPatient: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <Button type="submit" onClick={(e) => e.preventDefault()}>
+                    {/* <Button type="submit" onClick={(e) => e.preventDefault()}>
                       Submit
-                    </Button>
+                    </Button> */}
                   </div>
                 </div>
               </div>

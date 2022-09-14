@@ -15,8 +15,10 @@ import DataTableComp from './DataTableComp'
 import { MyFormValues } from "./formValues";
 import { initialValues } from "./formValues";
 
+
 const UserForm: React.FunctionComponent = () => {
   const [data, setData] = useState<MyFormValues>(initialValues);
+  const num : number =  Date.now()
 
   let signUpSchema = Yup.object({
     name: Yup.string()
@@ -150,7 +152,9 @@ const UserForm: React.FunctionComponent = () => {
             </Grid>
 
             <SearchPatient />
-            <DataTableComp />
+            <DataTableComp id={num} />
+            <DataTableComp id={num+1} />
+
           </form>
         );
       }}
