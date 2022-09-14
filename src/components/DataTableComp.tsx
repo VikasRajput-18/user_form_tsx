@@ -1,6 +1,7 @@
 import React from "react";
-import $, { data } from "jquery";
+import $ from "jquery";
 import { dataList } from "./data";
+import DataList from "./DataList";
 
 class DataTableComp extends React.Component {
   componentDidMount() {
@@ -28,17 +29,8 @@ class DataTableComp extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {dataList.map((data, ind : number) => {
-                return (
-                  <tr key={ind}>
-                    <td>{data.name}</td>
-                    <td>{data.position}</td>
-                    <td>{data.office}</td>
-                    <td>{data.age}</td>
-                    <td>{data.start_date}</td>
-                    <td>{data.salary}</td>
-                  </tr>
-                );
+              {dataList.map((data, ind: number) => {
+                return <DataList key={ind} data={data} />;
               })}
             </tbody>
             <tfoot>
