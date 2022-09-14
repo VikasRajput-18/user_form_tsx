@@ -8,13 +8,8 @@ import {
 } from "@mui/material";
 
 import DeleteIcon from "@mui/icons-material/Delete";
-import {
-  Formik,
-  ErrorMessage,
-  FieldArray,
-  FieldArrayRenderProps,
-} from "formik";
-import React, { useState } from "react";
+import { Formik, FieldArray, FieldArrayRenderProps } from "formik";
+import React from "react";
 import * as Yup from "yup";
 
 interface SearchPatientForm {
@@ -72,6 +67,12 @@ const SearchPatient: React.FC = () => {
         >
           {(formik) => {
             console.log("errors", formik.errors.services);
+            // console.log(
+            //   formik.values.services.reduce(
+            //     (acc: number, cur: number) => acc += cur.total,
+            //     0
+            //   )
+            // );
             return (
               <div>
                 <div className="search_patient">
@@ -287,9 +288,7 @@ const SearchPatient: React.FC = () => {
                                   Add
                                 </Button>
                               </div>
-                              <div className="errors">
-                             {/* errors for table  */}
-                              </div>
+                              <div className="errors"></div>
                             </div>
                           );
                         }}

@@ -11,10 +11,11 @@ import ContactDetails from "./ContactDetails";
 import AddressDetails from "./AddressDetails";
 import OtherDetails from "./OtherDetails";
 import SearchPatient from "./SearchPatient";
+import DataTableComp from './DataTableComp' 
 import { MyFormValues } from "./formValues";
 import { initialValues } from "./formValues";
 
-const UserForm: React.FC = () => {
+const UserForm: React.FunctionComponent = () => {
   const [data, setData] = useState<MyFormValues>(initialValues);
 
   let signUpSchema = Yup.object({
@@ -149,6 +150,7 @@ const UserForm: React.FC = () => {
             </Grid>
 
             <SearchPatient />
+            <DataTableComp />
           </form>
         );
       }}
